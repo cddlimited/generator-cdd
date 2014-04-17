@@ -1,0 +1,65 @@
+// HSL Lightness variations
+
+@mixin darken-bg($color) {
+    background-color: darken( $color, 10% );
+}
+
+@mixin lighten-bg($color) {
+    background-color: lighten( $color, 10% );
+}
+
+// Transparent versions
+
+@mixin darken-bg-alpha($color) {
+    background-color: rgba( $color, .4);
+}
+
+@mixin lighten-bg-alpha($color) {
+    background-color: rgba( $color, .4);
+}
+
+// White and black stripes
+  
+@mixin speed-stripe($color) {
+    content: '';
+    display:block;
+    margin-top: 0.3em;
+    color:$color;
+    height:2px;
+    background: $color;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from($color), to(rgba(255, 255, 255, 0)));
+}
+
+@mixin speed-stripe-left($color) {
+    content: '';
+    display:block;
+    margin-top: 0.3em;
+    color:$color;
+    height:2px;
+    background: $color;
+    background: -webkit-gradient(radial, 0% 50%, 0, 20% 0%, 350, from($color), to(rgba(255, 255, 255, 0)));
+}
+
+@mixin speed-stripe-right($color) {
+    content: '';
+    display:block;
+    margin-top: 0.3em;
+    color:$color;
+    height:2px;
+    background: $color;
+    background: -webkit-gradient(radial, 0% 50%, 0, 20% 50%, 350, from($color), to(rgba(255, 255, 255, 0)));
+}
+
+// Browser fixes
+
+@mixin cross-browser-inline-block {
+  display: inline-block; /* For normal, healthy browsers */
+ 
+  * html & { /* for IE6 */
+    display: inline;
+  }
+ 
+  *+html & { /* for IE7 */
+    display: inline;
+  }
+}

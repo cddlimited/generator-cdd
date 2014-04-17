@@ -1,0 +1,119 @@
+
+
+// 25/25 suscribe form styling
+
+.pagid-form {
+
+  font-size: 1em;
+  background-color: $form-bg;
+  text-align: center;
+
+  @include breakpoint(child-bear) { text-align: left; }
+
+  form {
+    margin: 1em;
+    padding-bottom: 1em;
+  }
+
+  input[type="text"] {
+    @include font-family(default);
+    @include font-size(1);
+
+    width: 100%;
+    padding: 0.7em 1em;
+    margin: 0.3em 0 0.3em 0;
+    background-color: $form-fg;
+    color: $white;
+    text-transform: $text-transform;
+    letter-spacing: 0.2em;
+    font-weight: 100;
+    border: 0;
+
+    @include breakpoint(teen-bear) { @include font-size(1.4); }
+    @include breakpoint(mama-bear) { @include font-size(1.9); }
+  }
+
+  input[type="submit"] {
+    @extend .button;
+
+    color: $white;
+    font-size: 1em;
+    display: block;
+    margin: 2em auto;
+    padding: 1em 2em;
+    border: 0;
+    cursor: pointer;
+
+    @include breakpoint(baby-bear) { font-size: 1.3em;}
+  }
+
+  label {
+    @include font-family(default);
+    font-size: 1em;
+    line-height: 4em;
+    margin-left: 1em;
+    text-transform: $text-transform;
+    letter-spacing: 0.2em;
+
+
+    @include breakpoint(teen-bear) { font-size: 1.1em; }
+    @include breakpoint(mama-bear) {font-size: 1.4em; }
+
+  }
+
+  select {
+    @include font-family(default);
+    width: 7em;
+    padding: 0.7em 1em;
+    margin: 0 0.2em 1em 0.2em;
+    background: $form-fg url('../img/layout/form_arrows.png') 86% center no-repeat;
+    color: $white;
+    font-size: 1em;
+    text-transform: $text-transform;
+    border: 0 !important;  /*Removes border*/
+    border-radius: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+
+    @include breakpoint(teen-bear) { font-size: 1.1em; padding: 0.8em 1em; margin: 0.2em; }
+    @include breakpoint(mama-bear) { font-size: 1.4em; }
+  }
+
+  option {
+    border: 0;
+  }
+
+  .form-radios {
+    vertical-align: middle;
+  }
+  
+  .toggle-button {
+    width: 140px;
+    height: 50px;
+    margin: 0.3em 0.3em 0em 0em;
+    cursor: pointer;
+
+    @include breakpoint(mama-bear) { margin: 0em 0.3em; }
+    
+    &.yes {
+      background: $form-fg url("../img/layout/buttons_form.jpg") 0px -50px no-repeat;
+      &.checked { background-position: 0px 0px; }
+    }
+
+    &.no {
+      background: $form-fg url("../img/layout/buttons_form.jpg") 0px -150px no-repeat;
+      &.checked { background-position: 0px -100px; }
+    }
+
+  }
+
+  // Drupal specific styles
+
+  .webform-container-inline div { @include cross-browser-inline-block; }
+  .form-required { display: none; }
+
+
+}

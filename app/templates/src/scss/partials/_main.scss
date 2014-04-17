@@ -1,0 +1,170 @@
+main {
+
+  // Navigation
+  margin-top: $main-bar-height;
+  @include breakpoint(teen-bear) { margin-top: $main-bar-height-full; } 
+
+  /* -------------------------------------------- */
+
+  // BACKGROUND IMAGES
+
+  // Default image
+  background-image: url('../img/backgrounds/bg_blank.jpg');
+  
+  // Main sections with custom background images
+
+  &.bg {
+
+    padding-top: 30%;
+  
+    background-position: 60% top;
+    background-repeat: no-repeat;
+    background-size: 200%; 
+
+    &.products-page { background-image: url('../img/backgrounds/bg_products.jpg'); }
+    &.professional-page { background-image: url('../img/backgrounds/bg_professional.jpg'); }
+    &.twentyfive-25-page { background-image: url('../img/backgrounds/bg_2525.jpg'); }
+    &.why-pagid-page { background-image: url('../img/backgrounds/bg_why-pagid.jpg'); }
+    &.proud-to-fit-page { background-image: url('../img/backgrounds/bg_proud-to-fit.jpg'); }
+    &.how-brakes-work-page { background-image: url('../img/backgrounds/bg_how-brakes-work.jpg'); }
+    &.common-problems-page { background-image: url('../img/backgrounds/bg_common-problems.jpg'); }
+    &.distributors-page { background-image: url('../img/backgrounds/bg_distributors.jpg'); }
+    
+    // Breakpoint to reuse background image for desktop and mobile
+    @include breakpoint(teen-bear) { 
+      padding-top: 0;
+      background-position: center top;
+      background-size: 160%; 
+    }
+
+    @include breakpoint(mama-bear) { 
+      padding-top: 0;
+      background-position: center top;
+      background-size: auto; 
+    }
+
+
+    // Sub navigation is visible, add more top margin to the page.
+    &.subnav { @include breakpoint(mama-bear) { background-position-y: 5.56em; } }
+  }
+
+
+  // Backgrounds for the intro Animation
+
+  &.home-page {
+
+    .grid { 
+
+      padding-bottom: 0;
+
+      @include breakpoint(infant-bear) { padding-top: 25em; }
+      @include breakpoint(teen-bear) { padding-top: 10%; }
+    }
+
+    article { 
+
+      position: relative;
+
+      @include breakpoint(infant-bear) { 
+      
+        background-position: center top;
+        // background-attachment: fixed;
+        background-repeat: no-repeat;
+
+        &.products { background-image: url('../img/backgrounds/bg_intro_1_mobile.jpg'); }
+        &.professional { background-image: url('../img/backgrounds/bg_intro_2_mobile.jpg'); }
+        &.proud-to-fit { background-image: url('../img/backgrounds/bg_intro_3_mobile.jpg'); }
+        &.pagid-25-25 { background-image: url('../img/backgrounds/bg_intro_4_mobile.jpg'); }
+
+      }
+
+      @include breakpoint(teen-bear) { 
+  
+        min-height: 564px;
+        background-size: 210%;
+
+        &.products { background-image: url('../img/backgrounds/bg_intro_1.jpg'); }
+        &.professional { background-image: url('../img/backgrounds/bg_intro_2.jpg'); }
+        &.proud-to-fit { background-image: url('../img/backgrounds/bg_intro_3.jpg'); }
+        &.pagid-25-25 { background-image: url('../img/backgrounds/bg_intro_4.jpg'); }
+      }
+
+      @include breakpoint(adult-bear) { 
+        min-height: 620px; 
+      }      
+
+      @include breakpoint(mama-bear) { 
+        height: 800px; 
+        overflow: hidden;
+        background-size: auto 130%; 
+      }
+
+      // First article gets the full height!
+      &.products { @include breakpoint(mama-bear) { height: 900px; background-size: auto; } }
+    }
+
+  }
+
+  // Scroll arrow indicators
+
+  .scroller {
+
+    display: none;
+
+    @include breakpoint(adult-bear) { 
+
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      height: 100px;
+      z-index: 0;
+
+      text-align: center;
+      text-transform: $text-transform;
+      letter-spacing: 0.3em;
+      background-repeat: no-repeat;
+
+      &.up { 
+        bottom: 4em;
+        position: absolute;
+        background-position: 49.9% top;
+        padding-top: 5em;
+        background-image: url('../img/layout/arrows-up.png'); 
+      }
+
+      &.down { 
+        position: absolute;
+        top: 36em;
+        background-position: 49.9% bottom;
+        background-image: url('../img/layout/arrows-down.png'); 
+
+        @include breakpoint(mama-bear) { 
+          position: fixed;
+          top: 60em; 
+        }
+      }
+    }
+  }
+
+  // Breadcrumb
+  .breadcrumbs {
+    margin: 0 auto;
+    width: 90%;
+    max-width: $grid-max-width;
+    padding-top: 2em;
+    padding-bottom: 1em;
+
+    .left, .right {
+      float: left;
+      width: 50%;
+    }
+  }
+
+}
+
+
+// Main helper classes
+
+.white-bg { 
+  background-color: $white; 
+}

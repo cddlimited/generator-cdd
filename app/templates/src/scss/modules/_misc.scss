@@ -1,0 +1,29 @@
+::selection{
+  background:#333;
+  color:#fff;
+  text-shadow:none;
+}
+::-moz-selection{
+  background:#333;
+  color:#fff;
+  text-shadow:none;
+}
+::-webkit-selection{
+  background:#333;
+  color:#fff;
+  text-shadow:none;
+}
+
+// Other helper classes
+
+.hidden { display: none; }
+
+.hidden-tablet { 
+  display: none; 
+  @include breakpoint(teen-bear) { display: block; } 
+}  
+.show-tablet { 
+  @include breakpoint(teen-bear) { display: none; } 
+}
+
+.push-down { margin-top: 4em; }

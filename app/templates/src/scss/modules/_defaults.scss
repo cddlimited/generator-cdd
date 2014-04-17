@@ -1,0 +1,37 @@
+* {
+  box-sizing:border-box;
+  font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  @include font-family(default);
+  font-size: 100%;
+  line-height: 1.618;
+  margin: 0;
+  padding: 0;
+  background: $body-colour;
+  color: $text-colour;
+}
+
+h1 {
+  letter-spacing: 0.2em;
+  text-transform: $text-transform;
+}
+
+h2 {
+  letter-spacing: 0.2em;
+  text-transform: $text-transform;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $white;
+}
