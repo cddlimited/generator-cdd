@@ -8,7 +8,7 @@ Getting started
 
 Install: 
 
-    npm install -g generator-fed-up
+~~npm install -g generator-fed-up~~ (Not added to yeoman community generators yet)
 
 Run it with yo: 
 
