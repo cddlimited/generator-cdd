@@ -18,7 +18,7 @@
     };
 
 
-    // Function to change active country in the map screen (contact us and about pages)
+    // Description of function
 
     this.someFunction = function(target) {
 
