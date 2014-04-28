@@ -1,4 +1,4 @@
-yo-fed-up
+generator-fed-up
 =========
 
 Yeoman generator for a clean, framework-less Front-End setup. Grunt, Modular Sass, Autoprefixer, a simple grid system - All you need to get started, no BS!
