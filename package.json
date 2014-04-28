@@ -4,7 +4,7 @@
   "description": "Yeoman generator Yeoman generator for a clean, framework-less Front-End setup. Grunt, Modular Sass, Autoprefixer, a simple grid system - All you need to get started, no BS!",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "troglor/yo-fed-up",
+  "repository": "troglor/generator-fed-up",
   "author": {
     "name": "Bård N Hovde",
     "email": "",

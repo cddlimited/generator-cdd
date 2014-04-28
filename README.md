@@ -8,8 +8,12 @@ Getting started
 
 Install: 
 
-~~npm install -g generator-fed-up~~ (Not added to yeoman community generators yet)
+~~npm install -g generator-fed-up~~ (Not added to yeoman community generators as of yet)
 
-Run it with yo: 
+Development: from the fed-up folder, run the following as sudo:
+  
+    npm link
+
+Then, start the generator with yo: 
 
     yo fed-up
