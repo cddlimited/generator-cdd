@@ -1,5 +1,16 @@
 
-// IE7 and 8 font fallback mixin - courtesy of CSS-Tricks.com
+// *************************************
+//
+//   Font mixins
+//   -> All font related mixins and helpers
+//
+// *************************************
+
+
+
+// -------------------------------------
+//   IE7 and 8 font fallback mixin - courtesy of CSS-Tricks.com
+// -------------------------------------
 
 @mixin font-size($size: 1.6, $line: $size * 1.61803399) {
   font-size: ($size * 10) + px;
@@ -8,8 +19,22 @@
   line-height: $line + rem;
 }
 
+
+// -------------------------------------
+//   Font family helper
+// -------------------------------------
+
 @mixin font-family($family: "default") {
   @if $family == "default" {
     font-family: 'open_sanslight';
+  }  
+  @if $family == "thin" {
+    font-family: 'open_sanslight';
+  }  
+  @if $family == "bold" {
+    font-family: 'open_sanslight';
+  }  
+  @if $family == "georgia" {
+    font-family: 'Georgia, serif';
   }
 }

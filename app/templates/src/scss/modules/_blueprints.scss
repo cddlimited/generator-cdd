@@ -1,100 +1,56 @@
 
-.list-blueprint {
-
-  // Extend this list to produce a responsive list
-
-  ul { 
-    margin-top: 1em; 
-    margin-left: -2%;
-    overflow: hidden;
-  }
-
-  li {
-    display: inline-block; *display:inline; zoom:1;
-    vertical-align: top;
-    width: 100%;
-    padding: 2% 3%;
-    margin: 1% 0 1% 2%;
-
-    @include breakpoint(child-bear) { width: 46%; }
-    @include breakpoint(teen-bear) { width: 31%; }
-
-  }
-}
-
-.grid-list-blueprint {
-
-  // Extend this list to produce a responsive grid list
-
-  ul { 
-    margin-top: 1em; 
-    overflow: hidden;
-    border-left: 1px solid $gray;
-    border-top: 1px solid $gray;
+// *************************************
+//
+//   Blueprints
+//   -> 
+//
+// *************************************
 
 
-  }
+// -------------------------------------
+//   Buttons and icons
+// -------------------------------------
 
-  li {
-    display: block;
-    vertical-align: middle;
-    float: left;
-    margin-left: -1px;
-    margin-top: -1px;
-    width: 50.2%;
-    border: 1px solid $gray;
 
-    @include breakpoint(baby-bear) { width: 33.45%; }
-    @include breakpoint(teen-bear) { width: 25.1%; }
-    @include breakpoint(mama-bear) { width: 20.1%; }
+// ----- Standard buttons ----- //
 
-  }
-}
+%std-button-blueprint {
 
-.article-list-blueprint {
+  @include font-family(bold);
 
-  // Extend this list to produce a responsive article grid list
-
-  margin-left: -3%;
-  overflow: hidden;
-
-  article {
-    display: inline-block; *display:inline; zoom:1;
-    vertical-align: top;
-    width: 100%;
-    padding: 1% 0 4% 3%;
-
-    @include breakpoint(child-bear) { width: 49.7%; }
-  }
-}
-
-// Cross-site button style;
-
-.button-blueprint {
-  display: block;
-  padding: 1em 0em;
-  margin: 3em 0;
+  width: 100%;
   text-align: center;
-  text-transform: $text-transform;
-  font-family: $light-font-family; 
-  letter-spacing: 0.3em;
-  @include breakpoint(infant-bear) { padding: 1em 1em; }
-  @include breakpoint(mama-bear) { 
-    display: inline-block; *display:inline; zoom:1;
-    padding: 1em 4em;
+
+  display:inline-block;
+  padding: 0 0.8em;
+  margin: 1em 0;
+  clear: both;
+
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing: $letter-spacing;
+
+  @include breakpoint(teen-bear) { width: auto; }
+
+  &.large {
+    @include font-size(3.6);
+    line-height: 2.1em;
+  }  
+
+  &.small {
+    @include font-size(2);
+    @include font-family(thin);
+
+    line-height: 2.1em;
+    padding: 0 1.8em;
   }
-}
 
-.arrow-left-blueprint {
-  font-family: 'icomoon';
-  content: "\e60b";
-  font-size: 0.7em;
-  padding-right: 0.8em;
-}
+  &.blue {
+    background-color:$blue;
+  }
 
-.arrow-right-blueprint {
-  font-family: 'icomoon';
-  content: "\e603";
-  font-size: 0.7em;
-  padding-right: 0.8em;
+  &.red {
+    background-color:$red;
+  }
+
 }

@@ -26,7 +26,10 @@
     "front-end",
     "modernizr",
     "jquery",
-    "grunt"
+    "grunt",
+    "pattern-lab",
+    "pattern library",
+    "oocss"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",

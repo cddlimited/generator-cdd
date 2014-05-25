@@ -1,173 +1,79 @@
-// Navigation burger --------------------------------------------------------//
+
+// *************************************
+//
+//   Buttons
+//   ->
+//
+// *************************************
+
+
+// -------------------------------------
+//   Cross-site button
+// -------------------------------------
+
+.button {
+
+  @extend %std-button-blueprint;
+
+}
+
+
+
+// -------------------------------------
+//   Navigation burger
+// -------------------------------------
 
 .burger {
   border: 0;
   background-color: transparent;
   padding: 0.93333em 0.7em;
-  -webkit-transition: .3s;
   transition: .3s;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   /* */
-}
 
-.burger:hover {
-  opacity: 1;
-}
-
-.burger:active {
-  -webkit-transition: 0;
-  transition: 0;
-}
-
-.burger:focus {
-  outline: none;
-}
-
-.burger::-moz-focus-inner {
-  border: 0;
+  &:hover { opacity: 1; }
+  &:active { transition: 0; }
+  &:focus { outline: none; }
+  .burger::-moz-focus-inner { border: 0; }
 }
 
 .lines {
   display: inline-block;
+  position: relative;
   width: 20px;
   height: 3px;
   margin-bottom: 3px;
   background: $main-bar-burger-col;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
-  position: relative;
-}
 
-.lines:before,
-.lines:after {
-  display: inline-block;
-  width: 20px;
-  height: 3px;
-  background: $main-bar-burger-col;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  position: absolute;
-  left: 0;
-  content: '';
-  -webkit-transform-origin: 0.2em center;
-  -ms-transform-origin: 0.2em center;
-  transform-origin: 0.2em center;
-}
+  &:before,
+  &:after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 20px;
+    left: 0;
+    height: 3px;
+    background: $main-bar-burger-col;
+    transition: 0.3s;
+    transform-origin: 0.2em center;
+  }
 
-.lines:before {
-  top: 6px;
-}
-
-.lines:after {
-  top: -6px;
-}
-
-.burger.close .lines {
-  background: transparent;
+  &::before { top: 6px; }
+  &::after { top: -6px; }
+  .close & { background: transparent; }
 }
 
 .burger.close .lines:before,
 .burger.close .lines:after {
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
   top: 0;
   width: 20px;
+  transform-origin: 50% 50%;
 }
 
-.burger.close .lines:before {
-  -webkit-transform: rotate3d(0, 0, 1, 45deg);
-  -ms-transform: rotate3d(0, 0, 1, 45deg);
-  transform: rotate3d(0, 0, 1, 45deg);
-}
+.burger.close .lines:before { transform: rotate3d(0, 0, 1, 45deg); }
+.burger.close .lines:after { transform: rotate3d(0, 0, 1, -45deg); }
 
-.burger.close .lines:after {
-  -webkit-transform: rotate3d(0, 0, 1, -45deg);
-  -ms-transform: rotate3d(0, 0, 1, -45deg);
-  transform: rotate3d(0, 0, 1, -45deg);
-}
-
-// End of navigation burger -----------------------------------------------------//
-
-
-.down-arrow, .up-arrow {
-  position: relative;
-  float: right;
-  margin: 0 0.6em;
-}
-
-.left-arrow, .right-arrow {
-  position: relative;
-  margin: 0 1em;
-}
-
-.down-arrow:before, .down-arrow:after, .up-arrow:before, .up-arrow:after, .left-arrow:before, .right-arrow:before, .left-arrow:after, .right-arrow:after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  height: 0px;
-  width: 5px;
-  border-radius: 28%;
-  border: 1px solid $white;
-}
-
-.down-arrow.black:before, .down-arrow.black:after, .up-arrow.black:before, .up-arrow.black:after, .left-arrow.black:before, .right-arrow.black:before, .left-arrow.black:after, .right-arrow.black:after {
-  border: 1px solid $black;   
-}
-
-.down-arrow:before {
-  left: 0px;
-  transform: rotate(40deg);
-}
-
-.down-arrow:after {
-  left: 4px;
-  transform: rotate(-40deg);
-}
-
-.up-arrow:before {
-  left: 0px;
-  transform: rotate(-40deg);
-}
-
-.up-arrow:after {
-  left: 4px;
-  transform: rotate(40deg);
-}
-
-.left-arrow:before {
-  left: 0px;
-  transform: rotate(40deg);
-}
-
-.left-arrow:after {
-  left: 4px;
-  transform: rotate(-40deg);
-}
-
-.right-arrow:before {
-  top: 52%;
-  transform: rotate(-40deg);
-}
-
-.right-arrow:after {
-  top: 38%;
-  transform: rotate(40deg);
-}
-
-.button {
-  @extend .button-blueprint;
-  background-color: $blue;
-
-  &:hover { @include lighten-bg($blue); }
-
-  span:before {
-    @extend .arrow-right-blueprint;
-  }
-}
-
+// End of Navigation burger
 

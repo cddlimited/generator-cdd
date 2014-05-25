@@ -1,4 +1,25 @@
-// HSL Lightness variations
+
+// *************************************
+//
+//   General helper mixins
+//   -> Font and breakpoint mixins in separate files
+//
+// *************************************
+
+
+
+// -------------------------------------
+//   HSL Lightness variations for hover/active states
+// -------------------------------------
+
+
+@mixin darken($color) {
+    color: darken( $color, 10% );
+}
+
+@mixin lighten($color) {
+    color: lighten( $color, 10% );
+}
 
 @mixin darken-bg($color) {
     background-color: darken( $color, 10% );
@@ -8,7 +29,17 @@
     background-color: lighten( $color, 10% );
 }
 
-// Transparent versions
+
+// ----- Transparent version ----- //
+
+
+@mixin darken-alpha($color) {
+    color: rgba( $color, .4);
+}
+
+@mixin lighten-alpha($color) {
+    color: rgba( $color, .4);
+}
 
 @mixin darken-bg-alpha($color) {
     background-color: rgba( $color, .4);
@@ -18,39 +49,11 @@
     background-color: rgba( $color, .4);
 }
 
-// White and black stripes
-  
-@mixin speed-stripe($color) {
-    content: '';
-    display:block;
-    margin-top: 0.3em;
-    color:$color;
-    height:2px;
-    background: $color;
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 350, from($color), to(rgba(255, 255, 255, 0)));
-}
 
-@mixin speed-stripe-left($color) {
-    content: '';
-    display:block;
-    margin-top: 0.3em;
-    color:$color;
-    height:2px;
-    background: $color;
-    background: -webkit-gradient(radial, 0% 50%, 0, 20% 0%, 350, from($color), to(rgba(255, 255, 255, 0)));
-}
+// -------------------------------------
+//   Cross-browser fixes
+// -------------------------------------
 
-@mixin speed-stripe-right($color) {
-    content: '';
-    display:block;
-    margin-top: 0.3em;
-    color:$color;
-    height:2px;
-    background: $color;
-    background: -webkit-gradient(radial, 0% 50%, 0, 20% 50%, 350, from($color), to(rgba(255, 255, 255, 0)));
-}
-
-// Browser fixes
 
 @mixin cross-browser-inline-block {
   display: inline-block; /* For normal, healthy browsers */

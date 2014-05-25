@@ -23,7 +23,7 @@ var CddbaseGenerator = yeoman.generators.Base.extend({
     this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log('Welcome, Pilgrim! You\'re using the fantastic ' + chalk.magenta('CDDbase generator!\n'));
+    this.log('Welcome, Pilgrim! You\'re using the fantastic ' + chalk.magenta('Fed Up -generator!\n'));
 
     var prompts = [
     {

@@ -1,146 +1,16 @@
 
-
-// Standard lists in content- arrow bullets
-
-.column.arrow-list {
-
-  ul { list-style: none; }
-
-  li {
-
-    margin-top: 1em;
-
-    &:before { 
-      @extend .arrow-right-blueprint;
-    }
-  }
-}
+// *************************************
+//
+//   Lists
+//   ->
+//
+// *************************************
 
 
+// -------------------------------------
+//   Level 2 comment
+// -------------------------------------
 
+// ----- Level 3 comment ----- //
 
-
-
-// Product page article list 
-
-.product-grid, .news-grid {
-  @extend .article-list-blueprint;
-
-  p, li { 
-    color: $olive; 
-    font-style: italic;
-  }
-  
-  ul { list-style: none; }
-
-  li:before { 
-    @extend .arrow-right-blueprint;
-  }
-
-  img { width: 100%; }
-}
-
-.news-grid {
-
-  span { 
-    color: white; 
-    line-height: 3em;
-  }
-  
-  time { color: $olive; }
-
-  .subtitle { 
-    font-style: normal;
-    line-height: 1.3em;
-    text-transform: $text-transform;
-  }  
-
-}
-
-
-
-
-
-.products-footer {
-  @extend .list-blueprint;
-  
-  ul li {
-    background-color: blue;
-    background-size: cover;
-    background-color: #2873B9;
-
-    @include breakpoint(teen-bear) { min-height: 23em; }
-  }
-
-  .dial { background-image: url(../img/layout/box_dial.jpg); }
-  .brake { background-image: url(../img/layout/box_brake.jpg); }
-  .waves { background-image: url(../img/layout/box_waves.jpg); }
-
-  h1 {
-    margin: 0;
-    font-size: 1.9em;
-    line-height: 1.5em;
-    word-break: break-all;
-    
-    @include breakpoint(mama-bear) { word-break: normal; }
-  }
-
-  p {
-    font-size: 1.05em;
-  }
-
-  .grid {
-    padding-top: 3em;
-    padding-bottom: 4em;
-  }
-}
-
-.professional-footer {
-  @extend .list-blueprint;
-
-  ul li {
-    text-align: center;
-    padding: 0;
-  }
-
-  img { max-width: 100%; }
-
-  a:hover img { 
-    opacity:0.8;
-    filter:alpha(opacity=80); /* For IE8 and earlier */
-  }
-}
-
-.proud-to-fit-page {
-
-  // List for the advert thumbnails
-  text-align: center;
-
-  @include breakpoint(teen-bear) { text-align: left; }
-
-  ul li {
-    @include cross-browser-inline-block;
-
-    margin: 1em 1em 0 0;
-    list-style: none;
-
-    img {
-      max-height: 198px;
-      max-width: 140px;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Level 4 comment

@@ -1,88 +1,64 @@
 
-
-/* SIZES */
-
-
-$grid-max-width: 1000px; // Max width the grid will expand to
-
-/* -------------------------------------------- */
-
-
-/* COLOURS */
-
-$white: white;
-$lighter-gray: #F5F5F5;
-$light-gray: #e3e7ec;
-$gray: gray;
-$darkish-gray: #4B4B4B;
-$dark-gray: #3A3A3A;
-$black: black;
-
-$olive: #6e878b;
-$blue: #0075bc;
-
-$body-colour: $black;
-$text-colour: $white;
-
-$form-fg: #3b3e42;
-$form-bg: #25282d;
-
-/* -------------------------------------------- */
+// *************************************
+//
+//   Site-wide variables and configuration
+//   -> 
+//
+// *************************************
 
 
-/* GENERAL */
+// -------------------------------------
+//   Sizes
+// -------------------------------------
 
 
-// Navigation
+$grid-max-width: 1400px; // Max width the grid will expand to
+$grid-max-width-small: 960px; // Max width the small grid will expand to
 
-$main-nav-fg-col: $black;
-$main-nav-bg-col: $white;
-$main-nav-hover-col: $dark-gray;
 
-// Main and Sub bar: 
+// -------------------------------------
+//   Colours
+// -------------------------------------
 
-$bar-letter-spacing: 0.2em;
 
-$main-bar-height: 4em;
-$main-bar-height-full: 6em;
-$main-bar-fg-col: $black;
-$main-bar-bg-col: $white;
-$main-bar-hover-col: $dark-gray;
-$main-bar-burger-col: $black;
+$red: #C9243F;
+$blue: #09C;
+$gray: #666;
+// ...
 
-$sub-bar-height: 3.7em;
-$sub-bar-fg-col: $white;
-$sub-bar-bg-col: $black;
 
-$sub-bar-active-col: $gray;
-$sub-bar-hover-col: $gray;
+// Monochrome Colours
+$black: rgb(0,0,0);
+$darkergrey: lighten($black, 10%);
+$darkgrey: lighten($black, 25%);
+$grey: lighten($black, 50%);
+$lightgrey: lighten($black, 75%);
+$lightergrey: lighten($black, 90%);
+$white: rgb(255,255,255);
 
-$language-fg-col: $white;
-$language-bg-col: $black;
-$language-hover-col: $dark-gray;
 
-// Header
-
-$header-text-col: $white;
+// Colour links
+$body-colour: $white;
+$text-colour: $darkergrey;
+$link-colour: $darkgrey;
 
 
 
-/* -------------------------------------------- */
+// -------------------------------------
+//   General
+// -------------------------------------
 
-/* TYPOGRAPHY */
+
+// -------------------------------------
+//   Typography
+// -------------------------------------
+
 
 $text-transform: uppercase;
+$letter-spacing: 0.1em;
 
 // Font weights
 $XB-font-weight: bolder;
 $bold-font-weight: bold;
 $regular-font-weight: 300;
 $light-font-weight: 100;
-
-// Font families
-$XB-font-family: 'open_sansextrabold';
-$bold-font-family: 'open_sansbold';
-$medium-font-family: 'open_sansbold';
-$regular-font-family: 'open_sansregular';
-$light-font-family: 'open_sanslight';
-

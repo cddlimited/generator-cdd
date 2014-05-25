@@ -1,49 +1,16 @@
-.footer {
 
-  color: $gray;
-  @include breakpoint(mama-bear) { font-size: 0.9em; }
-  
-  ul { 
+// *************************************
+//
+//   Footer partial
+//   ->
+//
+// *************************************
 
-    display: none; 
-    float: right;
 
-    @include breakpoint(mama-bear) { display: block; }
-  }
+// -------------------------------------
+//   Level 2 comment
+// -------------------------------------
 
-  li {
-    @include cross-browser-inline-block;
+// ----- Level 3 comment ----- //
 
-    margin: 2em 1em;
-    list-style: none; 
-  }
-
-  a {
-    color: $gray;
-
-    &:hover { color: $white; }
-  }
-
-  .footer-logo {
-    display: block;
-    width: 100%;
-    border-bottom: 1px $dark-gray solid;
-    text-align: center;
-    padding: 6%;
-  }
-
-  .copyright {
-
-    display: block; 
-    width: 100%;
-    margin: 2em 0;
-    text-align: center;
-
-    @include breakpoint(mama-bear) { 
-      @include cross-browser-inline-block;
-      width: auto;
-      text-align: left;
-    }    
-  }
-
-}
+// Level 4 comment

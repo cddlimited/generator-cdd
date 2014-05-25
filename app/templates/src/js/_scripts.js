@@ -8,21 +8,22 @@
 
   // Constructor  ---------------------------------------------------
 
+
   function AppName() {
 
     // App config
     var that = this;
     this.domElements = {
-      el:   $('#selector'),
       el:   $('#selector')
+      // ...
     };
 
 
     // Description of function
 
-    this.someFunction = function(target) {
+    this.someFunction = function() {
 
-      console.log('Radical!');
+      console.log(that + 'is radical!');
     };
 
   }

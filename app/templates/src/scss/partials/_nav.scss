@@ -1,91 +1,17 @@
 
-// Main navigation menu - Full page
-
-#main-nav {
-
-  position: fixed;
-  left: 0;
-  top: $main-bar-height;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 1);
-
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s, visibility 0s 0.5s;
-  perspective: 1200px;
+// *************************************
+//
+//   Nav Partial
+//   ->
+//
+// *************************************
 
 
-  &.open {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.5s;
+// -------------------------------------
+//   Level 2 comment
+// -------------------------------------
 
-    > ul {
-      opacity: 1;
-      transform: rotateX(0deg);
-    }
-  }
+// ----- Level 3 comment ----- //
 
-  &.close {
-    > ul {
-      transform: translateY(25%) rotateX(-35deg);
-    }
-  }
-
-  > ul {
-    margin-top: 1em;
-    text-align: center;
-    opacity: 0.4;
-    transform: translateY(-25%) rotateX(35deg);
-    transition: transform 0.5s, opacity 0.5s;
-    margin-top: 10%;
-
-    li > ul {
-      display: none;
-    }
-
-  }
-
-  li {
-    a {
-      width: 100%;
-      display: block;
-      font-family: $light-font-family;
-      font-weight: $light-font-weight;
-      color: $main-nav-fg-col;
-      line-height: 1.8em;
-      letter-spacing: 0.3em;
-      font-size: 1em;
-
-      @include breakpoint(infant-bear) { font-size: 1.3em; }
-      @include breakpoint(baby-bear) { font-size: 1.9em; }
-      @include breakpoint(teen-bear) { font-size: 2.5em; }
-      @include breakpoint(mama-bear) { font-size: 3em; }
-
-      &:hover {
-        @include darken-bg($white);
-      }
-    }
-
-    // Subnavigation
-
-    > ul a {
-      color: $main-nav-bg-col;
-      background-color: $black;
-
-      &:hover {
-        @include darken-bg($gray);
-      }
-    }
-  }
-}
-
-
-
-
-
-
-
-
+// Level 4 comment
 
