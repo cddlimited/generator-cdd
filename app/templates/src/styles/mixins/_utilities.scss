@@ -1,11 +1,9 @@
-
 // *************************************
 //
 //   General helper mixins
 //   -> Font and breakpoint mixins in separate files
 //
 // *************************************
-
 
 
 // -------------------------------------
@@ -48,7 +46,6 @@
 @mixin lighten-bg-alpha($color) {
     background-color: rgba( $color, .4);
 }
-
 
 // -------------------------------------
 //   Cross-browser fixes
