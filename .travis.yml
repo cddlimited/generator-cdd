@@ -1,7 +1,0 @@
-language: node_js
-node_js:
-  - '0.10'
-before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'yo-fed-up' ]; then cd .. && eval "mv $currentfolder yo-fed-up" && cd yo-fed-up; fi
-
