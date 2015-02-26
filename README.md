@@ -1,5 +1,5 @@
 
-# Fed-Up Generator
+# Fed-Up Generator v2
 
 ## Features
 
