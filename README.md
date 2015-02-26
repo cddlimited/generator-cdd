@@ -24,7 +24,7 @@ Same features as [generator-gulp-webapp](https://github.com/yeoman/generator-gul
 
 Then, start the generator with yo: 
 
-    yo fed-up
+    yo cdd
 
 If you get any errors, you might have to re-run npm install with sudo!
 
