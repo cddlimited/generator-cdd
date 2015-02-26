@@ -1,5 +1,5 @@
 
-# Fed-Up Generator v2
+# CDD Generator v2
 
 ## Features
 
