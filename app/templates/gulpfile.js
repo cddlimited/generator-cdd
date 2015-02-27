@@ -13,6 +13,12 @@ gulp.task('styles', function() {
         .pipe($.autoprefixer({
             browsers: ['last 1 version']
         }))
+        .pipe(gulp.dest('.tmp/styles/temp'));
+});
+
+gulp.task('pixrem', ['styles'], function() {
+    return gulp.src('.tmp/styles/temp/main.css')
+        .pipe($.pixrem('17px'))
         .pipe(gulp.dest('.tmp/styles'));
 });
 
@@ -23,7 +29,7 @@ gulp.task('jshint', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('html', ['styles'], function() {
+gulp.task('html', ['pixrem'], function() {
     var assets = $.useref.assets({
         searchPath: '{.tmp,app}'
     });
@@ -69,7 +75,7 @@ gulp.task('extras', function() {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('connect', ['styles'], function() {
+gulp.task('connect', ['pixrem'], function() {
     var serveStatic = require('serve-static');
     var serveIndex = require('serve-index');
     var client = require('connect')()
@@ -118,7 +124,7 @@ gulp.task('watch', ['connect'], function() {
         'app/images/**/*'
     ]).on('change', $.livereload.changed);
 
-    gulp.watch('app/styles/**/*.scss', ['styles']);
+    gulp.watch('app/styles/**/*.scss', ['pixrem']);
     gulp.watch('bower.json', ['wiredep']);
 });
 
