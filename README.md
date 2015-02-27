@@ -1,5 +1,5 @@
 
-# Fed-Up Generator v2
+# CDD Generator v2
 
 ## Features
 
@@ -13,6 +13,7 @@ Same features as [generator-gulp-webapp](https://github.com/yeoman/generator-gul
 * jslint
 * Image optimization
 * [Bower](http://bower.io)
+* + [pixrem](https://github.com/gummesson/gulp-pixrem) for automatic rem -> px fallback!
 
 ## Getting Started
 
@@ -24,9 +25,13 @@ Same features as [generator-gulp-webapp](https://github.com/yeoman/generator-gul
 
 Then, start the generator with yo: 
 
-    yo fed-up
+    yo cdd
 
 If you get any errors, you might have to re-run npm install with sudo!
+
+## Developing
+
+When you start the build you need to tell gulp-pixrem the base font size, so that it can automatically generate px fallback values for <IE8. Look for the pixrem task and update to match your base font size.
 
 Once this is done, use the following commands when developing:
 
