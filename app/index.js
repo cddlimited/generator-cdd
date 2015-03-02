@@ -33,11 +33,11 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     writing: {
-        gulpfile: function() {
+        copyGulpfile: function() {
             this.template('gulpfile.js');
         },
 
-        structure: function() {
+        copyStructure: function() {
             this.mkdir('app');
             this.mkdir('app/scripts');
             this.mkdir('app/styles');
@@ -45,13 +45,13 @@ module.exports = yeoman.generators.Base.extend({
             this.mkdir('app/fonts');
         },
 
-        scripts: function() {
+        copyScripts: function() {
             this.directory('scripts/modules', 'app/scripts/modules');
             this.copy('scripts/main.js', 'app/scripts/main.js');
             this.copy('scripts/myApp.js', 'app/scripts/myApp.js');
         },
 
-        styles: function() {
+        copyStyles: function() {
             this.mkdir('app/styles/scss');
             this.directory('styles/core', 'app/styles/core');
             this.directory('styles/foundation', 'app/styles/foundation');
@@ -62,11 +62,11 @@ module.exports = yeoman.generators.Base.extend({
             this.template('styles/_main.scss', 'app/styles/main.scss');
         },
 
-        git: function() {
+        copyGit: function() {
             this.copy('gitignore', '.gitignore');
         },
 
-        app: function() {
+        copyApp: function() {
             this.fs.copyTpl(
                 this.templatePath('_index.html'),
                 this.destinationPath('app/index.html'),
@@ -84,15 +84,10 @@ module.exports = yeoman.generators.Base.extend({
             );
         },
 
-        projectfiles: function() {
-            this.fs.copy(
-                this.templatePath('editorconfig'),
-                this.destinationPath('.editorconfig')
-            );
-            this.fs.copy(
-                this.templatePath('jshintrc'),
-                this.destinationPath('.jshintrc')
-            );
+        copyProjectfiles: function() {
+            this.copy('editorconfig', '.editorconfig');
+            this.copy('jshintrc', '.jshintrc');
+            this.copy('bowerrc', '.bowerrc');
         }
     },
 

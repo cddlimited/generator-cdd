@@ -19,7 +19,8 @@ gulp.task('styles', function() {
 gulp.task('pixrem', ['styles'], function() {
     return gulp.src('.tmp/styles/temp/main.css')
         .pipe($.pixrem('17px'))
-        .pipe(gulp.dest('.tmp/styles'));
+        .pipe(gulp.dest('.tmp/styles'))
+        .pipe(gulp.dest('app/styles'));
 });
 
 gulp.task('jshint', function() {
