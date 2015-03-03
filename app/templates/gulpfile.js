@@ -3,7 +3,24 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-gulp.task('styles', function() {
+gulp.task('injectScss', function() {
+
+    var target = gulp.src('app/styles/main.scss');
+    var sources = gulp.src(['app/styles/modules/**/*.scss'], {read: false});
+
+    return target.pipe($.inject(sources, {
+        starttag: '// inject:scss',
+        endtag: '// endinject',
+        relative: true,
+        transform: function (filepath) {
+            // Return path without file ext
+            return '\'' + filepath.slice(0, -5) + '\',';
+        }
+    }))
+    .pipe(gulp.dest('app/styles'));
+});
+
+gulp.task('styles', ['injectScss'], function() {
     return gulp.src('app/styles/main.scss')
         .pipe($.plumber())
         .pipe($.rubySass({

@@ -31,10 +31,12 @@
 'foundation/_base',
 
 // -------------------------------------
-//   MODULES
+//   MODULES (automatically injected!)
 // -------------------------------------
 
-'modules/_module',
+// Please don't modify!
+// inject:scss
+// endinject
 
 // -------------------------------------
 //   VENDOR
