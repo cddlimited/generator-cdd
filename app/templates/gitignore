@@ -36,3 +36,6 @@ dist
 .sass-cache
 bower_components
 test/bower_components
+
+# Extra ignores
+.DS_Store
