@@ -103,8 +103,8 @@ h4,
 
 p, ul, ol, pre, table, blockquote {
     @include font-family("light");
-    margin-top: 1.41176471em;
-    margin-bottom: 1.41176471em;
+    margin-top: $base-line-height;
+    margin-bottom: $base-line-height;
 }
 
 a {
