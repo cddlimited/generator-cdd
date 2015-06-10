@@ -35,7 +35,7 @@ gulp.task('styles', ['injectScss'], function() {
 
 gulp.task('pixrem', ['styles'], function() {
     return gulp.src('.tmp/styles/temp/main.css')
-        .pipe($.pixrem('17px'))
+        .pipe($.pixrem('16px'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe(gulp.dest('app/styles'));
 });
