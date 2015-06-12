@@ -39,6 +39,10 @@ Once this is done, use the following commands when developing:
 - Run `bower install --save <package>` to install frontend packages using Bower
 - Run `gulp` to minify and build your application into the /dist folder
 
+### Subgenerators:
+
+- Run `yo cdd:module` to create a new sass module (you will be asked for the module name)
+
 ## License
 
 MIT
