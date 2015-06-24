@@ -21,7 +21,9 @@
     "module"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "BEM",
+    "cdd"
   ],
   "dependencies": {
     "yeoman-generator": "^0.18.0",
