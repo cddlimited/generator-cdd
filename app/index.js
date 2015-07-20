@@ -12,8 +12,16 @@ module.exports = yeoman.generators.Base.extend({
         var done = this.async();
 
         // Have Yeoman greet the user.
+        var greetings = [
+            'Wow! Shower much?!',
+            'Behold! It\'s the amazing ' + chalk.red('CDD') + ' generator!',
+            'Back again huh? Can\'t get enoug of the ' + chalk.red('CDD') + ' generator?',
+            'Fun fact: By the time I\'m done scaffolding, 26 million men decided to masturbate!',
+            'Hi there! Don\'t forget to ' + chalk.green('contribute') + ' if you find a bug or something that needs tweaking!'
+        ];
+        
         this.log(yosay(
-            'Welcome to the ' + chalk.red('CDD') + ' generator!'
+            greetings[Math.floor(Math.random()*greetings.length)]
         ));
 
         var prompts = [{
