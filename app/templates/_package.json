@@ -39,7 +39,7 @@
     },
     "frontend": {
         "name": "<%= _.slugify(appName) %>",
-        "stylesheets": "styles",
-        "javascripts": "scripts"
+        "stylesheets": "app/styles",
+        "javascripts": "app/scripts"
     }
 }

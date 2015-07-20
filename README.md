@@ -87,6 +87,12 @@ Once this is done, use the following commands when developing:
 
 - Run `yo cdd:module` to create a new sass module (you will be asked for the module name)
 
+### Generate Documentation:
+
+The generator comes with frontend-md bundled.
+
+- Run `frontend-md` to create a `FRONTEND.md` file with the folder structure and documentation from your js and scss files. Check their (github)[https://github.com/animade/frontend-md] for more information.
+
 ## License
 
 MIT
