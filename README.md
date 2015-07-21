@@ -1,5 +1,5 @@
 
-# CDD Generator v2
+# CDD Generator v3
 
 ## Features
 
@@ -13,7 +13,7 @@ Same features as [generator-gulp-webapp](https://github.com/yeoman/generator-gul
 * jslint
 * Image optimization
 * [Bower](http://bower.io)
-* + [pixrem](https://github.com/gummesson/gulp-pixrem) for automatic rem -> px fallback!
+* [pixrem](https://github.com/gummesson/gulp-pixrem) for automatic rem -> px fallback!
 
 ## The SASS base kit
 
