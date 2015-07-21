@@ -46,6 +46,7 @@ styles\foundation/
     |- _attributes.scss _________________________ # Global Attribute Modifiers
     |- _base.scss _______________________________ # Base-level tags
     |- _config.scss _____________________________ # Global Settings
+    |- _fonts_.scss _____________________________ # Global Font loader
 styles\core/
     |- _grid.scss _______________________________ # CSSWizandry grids
     |- _helpers.scss ____________________________ # Helpers (placeholders)
@@ -64,11 +65,13 @@ Then, start the generator with yo:
 
     yo cdd
 
+The generator will ask you a few questions about common libraries to include. It has also got a perch setting, which alters where the bower includes gets injected in the gulp task.
+
 If you get any errors, you might have to re-run npm install with sudo!
 
 ## Subgenerators
 
-When writing your sass module, simply use the following subgenerator to generate a new sass module in the /modules folder. This will be named for you, and injected into the loader main.scss.
+When writing your sass module, simply use the following subgenerator to generate a either a sass module or a js module in the appropriate /modules folder. This will be named for you, and sass partials will be injected into the loader main.scss.
 
     yo cdd:module
 
@@ -83,9 +86,6 @@ Once this is done, use the following commands when developing:
 - Run `bower install --save <package>` to install frontend packages using Bower
 - Run `gulp` to minify and build your application into the /dist folder
 
-### Subgenerators:
-
-- Run `yo cdd:module` to create a new sass module (you will be asked for the module name)
 
 ### Generate Documentation:
 
