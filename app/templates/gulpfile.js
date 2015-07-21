@@ -150,9 +150,17 @@ gulp.task('wiredep', function() {
         .pipe(wiredep())
         .pipe(gulp.dest('app/styles'));
 
+<% if (appType === 'perch') { %>
+    gulp.src('app/perch/templates/layouts/global/*.php')
+        .pipe(wiredep({
+            ignorePath: /^(\/|\.+(?!\/[^\.]))+\.+/
+        }))
+        .pipe(gulp.dest('app/perch/templates/layouts/global'));
+<% } else { %>
     gulp.src('app/*.html')
         .pipe(wiredep())
         .pipe(gulp.dest('app'));
+<% } %>
 });
 
 gulp.task('watch', ['connect'], function() {
