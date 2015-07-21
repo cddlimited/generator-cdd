@@ -24,11 +24,32 @@ module.exports = yeoman.generators.Base.extend({
             greetings[Math.floor(Math.random()*greetings.length)]
         ));
 
-        var prompts = [{
+        var prompts = [
+        {
             type: 'input',
             name: 'appName',
             message: 'What is the name of the project?',
             default: 'myApp' // Default to current folder name
+        }, {
+            type: 'checkbox',
+            message: 'Optional settings',
+            name: 'features',
+            choices: [
+                {
+                    name: 'jQuery',
+                    value: 'includeJquery'
+                },
+
+                {
+                    name: 'Modernizr',
+                    value: 'includeModernizr'
+                },
+
+                {
+                    name: 'Legacy tools for <IE9 (Respond.js, html5shiv)',
+                    value: 'includeLegacy'
+                }
+            ]
         }];
 
         this.prompt(prompts, function(props) {

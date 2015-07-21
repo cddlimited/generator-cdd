@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
 
         // Have Yeoman greet the user.
         this.log(yosay(
-            'Welcome to the ' + chalk.red('CDD') + ' generator!'
+            'All right, a new module!'
         ));
 
         var prompts = [{
@@ -21,22 +21,53 @@ module.exports = yeoman.generators.Base.extend({
             name: 'moduleName',
             message: 'What is the name of the module?',
             default: 'module' // Default to current folder name
+        }, {
+            type: 'list',
+            message: 'What type of module is this?',
+            name: 'moduleType',
+            choices: [
+                {
+                    name: 'scss',
+                    value: 'scss'
+                },
+                {
+                    name: 'js',
+                    value: 'js'
+                }
+            ]
+        }, {
+            type: 'input',
+            name: 'moduleDesc',
+            message: 'Enter a short module (optional)',
+            default: 'Module description' // Default to current folder name
         }];
 
         this.prompt(prompts, function(props) {
-
-            this.log(props.moduleName);
-            this.moduleName = props.moduleName;
+            this.moduleName     = props.moduleName;
+            this.moduleNameCaps = props.moduleName.charAt(0).toUpperCase() + props.moduleName.substring(1);
+            this.moduleType     = props.moduleType;
+            this.moduleDesc     = props.moduleDesc;
 
             done();
         }.bind(this));
     },
 
     writing: function() {
-        this.fs.copyTpl(
-            this.templatePath('_module.scss'),
-            this.destinationPath('app/styles/modules/_' + this.moduleName + '.scss'),
-            this
-        );
+
+
+        if ( this.moduleType === 'scss' ) {
+            this.fs.copyTpl(
+                this.templatePath('_module.scss'),
+                this.destinationPath('app/styles/modules/_' + this.moduleName + '.scss'),
+                this
+            );
+
+        } else {
+            this.fs.copyTpl(
+                this.templatePath('_module.js'),
+                this.destinationPath('app/scripts/modules/_' + this.moduleName + '.js'),
+                this
+            );        
+        }
     }
 });
