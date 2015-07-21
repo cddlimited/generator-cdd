@@ -143,6 +143,7 @@ module.exports = yeoman.generators.Base.extend({
         copyApp: function() {
 
             if ( this.appType !== 'perch' ) {
+                this.directory('perch', 'app/perch');
                 this.fs.copyTpl(
                     this.templatePath('_index.html'),
                     this.destinationPath('app/index.html'),

@@ -1,6 +1,7 @@
 /* jshint node:true */
 'use strict';
 var gulp = require('gulp');
+var sass = require('gulp-ruby-sass');
 var $ = require('gulp-load-plugins')();
 
 gulp.task('injectScss', function() {
