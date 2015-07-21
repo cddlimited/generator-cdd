@@ -21,12 +21,7 @@ gulp.task('injectScss', function() {
 });
 
 gulp.task('styles', ['injectScss'], function() {
-    return gulp.src('app/styles/main.scss')
-        .pipe($.plumber())
-        .pipe($.rubySass({
-            style: 'expanded',
-            precision: 10
-        }))
+    return sass('app/styles/main.scss', { style: 'expanded' })
         .pipe($.autoprefixer({
             browsers: ['last 2 versions']
         }))
