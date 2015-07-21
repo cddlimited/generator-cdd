@@ -25,37 +25,82 @@ module.exports = yeoman.generators.Base.extend({
         ));
 
         var prompts = [
-        {
-            type: 'input',
-            name: 'appName',
-            message: 'What is the name of the project?',
-            default: 'myApp' // Default to current folder name
-        }, {
-            type: 'checkbox',
-            message: 'Optional settings',
-            name: 'features',
-            choices: [
-                {
-                    name: 'jQuery',
-                    value: 'includeJquery'
-                },
+            {
+                type: 'input',
+                name: 'appName',
+                message: 'What is the name of the project?',
+                default: 'myApp' // Default to current folder name
+            }, {
+                type: 'list',
+                message: 'What type of project is this?',
+                name: 'appType',
+                choices: [
+                    {
+                        name: 'No Platform',
+                        value: 'blank'
+                    },
+                    {
+                        name: 'perch',
+                        value: 'perch'
+                    }
+                ]
+            }, {
+                type: 'checkbox',
+                message: 'Optional settings',
+                name: 'features',
+                choices: [
+                    {
+                        name: 'jQuery 2',
+                        value: 'includeJquery'
+                    },
 
-                {
-                    name: 'Modernizr',
-                    value: 'includeModernizr'
-                },
+                    {
+                        name: 'jQuery 1.9.X (IE 6/7/8 support)',
+                        value: 'includeJqueryLegacy'
+                    },
 
-                {
-                    name: 'Legacy tools for <IE9 (Respond.js, html5shiv)',
-                    value: 'includeLegacy'
-                }
-            ]
-        }];
+                    {
+                        name: 'Modernizr',
+                        value: 'includeModernizr'
+                    },
+
+                    {
+                        name: 'Legacy tools for <IE9 (Respond.js, html5shiv)',
+                        value: 'includeLegacy'
+                    }
+                ]
+            }
+        ];
 
         this.prompt(prompts, function(props) {
 
+            var features = props.features;
+
+            function hasFeature (feat) {
+                return features.indexOf(feat) !== -1;
+            }
+
             this.log(props.appName);
+
             this.appName = props.appName;
+            this.appType = props.appType;
+
+            this.includeJquery = hasFeature('includeJquery');
+            this.includeJqueryLegacy = hasFeature('includeJqueryLegacy');
+            this.includeModernizr = hasFeature('includeModernizr');
+            this.includeLegacy = hasFeature('includeLegacy');
+
+            // Generate bower.json
+            this.dependencies = {};
+
+            if ( this.includeJquery ) { this.dependencies["jquery"] = '~2.1.1'; }
+            if ( this.includeJqueryLegacy ) { this.dependencies["jquery"] = "~1.9.1"; }
+            if ( this.includeModernizr ) { this.dependencies["modernizr"] = "latest"; }
+            if ( this.includeModernizr ) { this.dependencies["respond"] = "1.4.2"; }
+            if ( this.includeLegacy ) { 
+                this.dependencies["respond"] = "~1.4.2"; 
+                this.dependencies["html5shiv"] = "~3.7.3"; 
+            }
 
             done();
         }.bind(this));
