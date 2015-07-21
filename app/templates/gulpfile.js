@@ -28,7 +28,7 @@ gulp.task('styles', ['injectScss'], function() {
             precision: 10
         }))
         .pipe($.autoprefixer({
-            browsers: ['last 1 version']
+            browsers: ['last 2 versions']
         }))
         .pipe(gulp.dest('.tmp/styles/temp'));
 });
@@ -47,12 +47,23 @@ gulp.task('jshint', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('html', ['pixrem'], function() {
+<% if (appType === 'perch') { %>
+gulp.task('html', ['pixrem', 'perch'], function() {
+<% } else { %>
+gulp.task('html', ['pixrem'], function() {    
+<% } %>
+
     var assets = $.useref.assets({
         searchPath: '{.tmp,app}'
     });
 
-    return gulp.src('app/*.html')
+    <% if (appType === 'perch') { %>
+    var filesToProcess = 'app/perch/templates/layouts/global/*.php';
+    <% } else { %>
+    var filesToProcess = 'app/*.html';
+    <% } %>
+
+    return gulp.src(filesToProcess)
         .pipe(assets)
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.csso()))
@@ -64,6 +75,24 @@ gulp.task('html', ['pixrem'], function() {
         })))
         .pipe(gulp.dest('dist'));
 });
+
+<% if (appType === 'perch') { %>
+
+gulp.task('movePhpFiles', ['html'], function(){
+    // Move perch partials to the correct folder
+    gulp.src([
+        'dist/head.php',
+        'dist/foot.php'
+    ])
+    .pipe(gulp.dest('dist/perch/templates/layouts/global'));
+});
+
+gulp.task('perch', function () {
+    return gulp.src(['app/perch/**/*', '!app/perch/templates/layouts/global/head.php', '!app/perch/templates/layouts/global/foot.php'], { dot: true })
+        .pipe(gulp.dest('dist/perch'));
+});
+
+<% } %>
 
 gulp.task('images', function() {
     return gulp.src('app/images/**/*')
@@ -84,8 +113,7 @@ gulp.task('fonts', function() {
 gulp.task('extras', function() {
     return gulp.src([
         'app/*.*',
-        '!app/*.html',
-        'node_modules/apache-server-configs/dist/.htaccess'
+        '!app/*.html'
     ], {
         dot: true
     }).pipe(gulp.dest('dist'));
@@ -146,12 +174,27 @@ gulp.task('watch', ['connect'], function() {
     gulp.watch('bower.json', ['wiredep']);
 });
 
+
+<% if (appType === 'perch') { %>
+
+gulp.task('build', ['jshint', 'images', 'fonts', 'extras', 'movePhpFiles'], function() {
+    return gulp.src('dist/**/*').pipe($.size({
+        title: 'build',
+        gzip: true
+    }));
+});
+
+<% } else { %>
+
 gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function() {
     return gulp.src('dist/**/*').pipe($.size({
         title: 'build',
         gzip: true
     }));
 });
+
+<% } %>
+
 
 gulp.task('default', ['clean'], function() {
     gulp.start('build');

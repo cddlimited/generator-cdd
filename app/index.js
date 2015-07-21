@@ -141,11 +141,15 @@ module.exports = yeoman.generators.Base.extend({
         },
 
         copyApp: function() {
-            this.fs.copyTpl(
-                this.templatePath('_index.html'),
-                this.destinationPath('app/index.html'),
-                this
-            );
+
+            if ( this.appType !== 'perch' ) {
+                this.fs.copyTpl(
+                    this.templatePath('_index.html'),
+                    this.destinationPath('app/index.html'),
+                    this
+                );
+            }
+
             this.fs.copyTpl(
                 this.templatePath('_package.json'),
                 this.destinationPath('package.json'),
