@@ -1,7 +1,7 @@
 /**
  * <%= _.slugify(moduleName) %>
  * 
- * <%= _.slugify(moduleDesc) %>
+ * <%= moduleDesc %>
  */
 
 var Namespace = Namespace || {};

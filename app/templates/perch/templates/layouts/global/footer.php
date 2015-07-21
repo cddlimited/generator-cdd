@@ -21,10 +21,10 @@
     <!-- endbuild -->
 
     <!-- build:js /scripts/main.js -->
-    <script src="/scripts/myApp.js"></script>
-    <script src="/scripts/main.js"></script>
     <script src="/scripts/modules/moduleA.js"></script>
     <script src="/scripts/modules/moduleB.js"></script>
+    <script src="/scripts/myApp.js"></script>
+    <script src="/scripts/main.js"></script>
     <!-- endbuild -->
 
 </body>
