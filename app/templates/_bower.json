@@ -1,5 +1,10 @@
 {
     "name": "<%= _.slugify(appName) %>",
     "version": "1.0.0",
-    "dependencies": <%= JSON.stringify(dependencies) %>
+    "dependencies": <%= JSON.stringify(dependencies) %>,
+    "devDependencies": {
+        <% if (appType === 'perch') { %>
+        "perch-dev-drawer": "*"
+        <% } %>
+    }
 }

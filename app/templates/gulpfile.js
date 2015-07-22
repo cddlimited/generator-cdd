@@ -153,6 +153,28 @@ gulp.task('wiredep', function() {
 <% if (appType === 'perch') { %>
     gulp.src('app/perch/templates/layouts/global/*.php')
         .pipe(wiredep({
+            ignorePath: /^(\/|\.+(?!\/[^\.]))+\.+/,
+            devDependencies: true, // default: false
+        }))
+        .pipe(gulp.dest('app/perch/templates/layouts/global'));
+<% } else { %>
+    gulp.src('app/*.html')
+        .pipe(wiredep())
+        .pipe(gulp.dest('app'));
+<% } %>
+});
+
+// inject bower components without dev
+gulp.task('wiredepBuild', function() {
+    var wiredep = require('wiredep').stream;
+
+    gulp.src('app/styles/*.scss')
+        .pipe(wiredep())
+        .pipe(gulp.dest('app/styles'));
+
+<% if (appType === 'perch') { %>
+    gulp.src('app/perch/templates/layouts/global/*.php')
+        .pipe(wiredep({
             ignorePath: /^(\/|\.+(?!\/[^\.]))+\.+/
         }))
         .pipe(gulp.dest('app/perch/templates/layouts/global'));
@@ -162,6 +184,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest('app'));
 <% } %>
 });
+
 
 gulp.task('watch', ['connect'], function() {
     $.livereload.listen();
@@ -181,7 +204,7 @@ gulp.task('watch', ['connect'], function() {
 
 <% if (appType === 'perch') { %>
 
-gulp.task('build', ['jshint', 'images', 'fonts', 'extras', 'movePhpFiles'], function() {
+gulp.task('build', ['wiredepBuild', 'jshint', 'images', 'fonts', 'extras', 'movePhpFiles'], function() {
     return gulp.src('dist/**/*').pipe($.size({
         title: 'build',
         gzip: true
@@ -190,7 +213,7 @@ gulp.task('build', ['jshint', 'images', 'fonts', 'extras', 'movePhpFiles'], func
 
 <% } else { %>
 
-gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function() {
+gulp.task('build', ['wiredepBuild', 'jshint', 'html', 'images', 'fonts', 'extras'], function() {
     return gulp.src('dist/**/*').pipe($.size({
         title: 'build',
         gzip: true
