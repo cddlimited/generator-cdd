@@ -121,8 +121,13 @@ module.exports = yeoman.generators.Base.extend({
 
         copyScripts: function() {
             this.directory('scripts/modules', 'app/scripts/modules');
-            this.copy('scripts/main.js', 'app/scripts/main.js');
             this.copy('scripts/myApp.js', 'app/scripts/myApp.js');
+
+            this.fs.copyTpl(
+                this.templatePath('scripts/_main.js'),
+                this.destinationPath('app/scripts/main.js'),
+                this
+            );
         },
 
         copyStyles: function() {
@@ -148,6 +153,7 @@ module.exports = yeoman.generators.Base.extend({
                     this.destinationPath('app/index.html'),
                     this
                 );
+                this.copy('extras/_debug.scss', 'app/styles/modules/_debug.scss');
             } else {
                 this.mkdir('app/perch');
                 this.directory('perch', 'app/perch');
