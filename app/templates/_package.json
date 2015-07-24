@@ -36,6 +36,11 @@
         "serve-static": "^1.4.0",
         "wiredep": "^2.0.0",
         "frontend-md": "^0.0.4"
+        <% if (this.esVersion === 'es6') { %>,
+        "gulp-babel": "^5.1.0",
+        "gulp-sourcemaps": "^1.5.2",
+        "vinyl-source-stream": "^1.1.0"
+        <% } %>
     },
     "frontend": {
         "name": "<%= _.slugify(appName) %>",

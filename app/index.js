@@ -45,6 +45,20 @@ module.exports = yeoman.generators.Base.extend({
                     }
                 ]
             }, {
+                type: 'list',
+                message: 'Would you like to include babel? (to compile es6)',
+                name: 'esVersion',
+                choices: [
+                    {
+                        name: 'No thanks',
+                        value: 'es5'
+                    },
+                    {
+                        name: 'yeah!',
+                        value: 'es6'
+                    }
+                ]
+            }, {
                 type: 'checkbox',
                 message: 'Optional settings',
                 name: 'features',
@@ -84,6 +98,7 @@ module.exports = yeoman.generators.Base.extend({
 
             this.appName = props.appName;
             this.appType = props.appType;
+            this.esVersion = props.esVersion;
 
             this.includeJquery = hasFeature('includeJquery');
             this.includeJqueryLegacy = hasFeature('includeJqueryLegacy');
@@ -96,7 +111,6 @@ module.exports = yeoman.generators.Base.extend({
             if ( this.includeJquery ) { this.dependencies["jquery"] = '~2.1.1'; }
             if ( this.includeJqueryLegacy ) { this.dependencies["jquery"] = "~1.9.1"; }
             if ( this.includeModernizr ) { this.dependencies["modernizr"] = "latest"; }
-            if ( this.includeModernizr ) { this.dependencies["respond"] = "1.4.2"; }
             if ( this.includeLegacy ) { 
                 this.dependencies["respond"] = "~1.4.2"; 
                 this.dependencies["html5shiv"] = "~3.7.3"; 

@@ -43,6 +43,18 @@ gulp.task('jshint', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
+
+<% if (esVersion === 'es6') { %>
+gulp.task('babel', function () {
+    return gulp.src('app/scripts/**/*.js')
+        .pipe($.sourcemaps.init())
+        .pipe($.babel())
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest('app/scripts/compiled/'));
+});
+<% } else { %>
+
+
 <% if (appType === 'perch') { %>
 gulp.task('html', ['pixrem', 'perch'], function() {
 <% } else { %>
@@ -198,13 +210,16 @@ gulp.task('watch', ['connect'], function() {
     ]).on('change', $.livereload.changed);
 
     gulp.watch('app/styles/**/*.scss', ['pixrem']);
+    <% if (esVersion === 'es6') { %> 
+    gulp.watch('app/scripts/**/*.js', ['babel']);
+    <% } %> 
     gulp.watch('bower.json', ['wiredep']);
 });
 
 
 <% if (appType === 'perch') { %>
 
-gulp.task('build', ['wiredepBuild', 'jshint', 'images', 'fonts', 'extras', 'movePhpFiles'], function() {
+gulp.task('build', ['wiredepBuild', 'jshint', <% if (esVersion === 'es6') { %> 'babel', <% } %> 'images', 'fonts', 'extras', 'movePhpFiles'], function() {
     return gulp.src('dist/**/*').pipe($.size({
         title: 'build',
         gzip: true
@@ -213,7 +228,7 @@ gulp.task('build', ['wiredepBuild', 'jshint', 'images', 'fonts', 'extras', 'move
 
 <% } else { %>
 
-gulp.task('build', ['wiredepBuild', 'jshint', 'html', 'images', 'fonts', 'extras'], function() {
+gulp.task('build', ['wiredepBuild', 'jshint', <% if (esVersion === 'es6') { %> 'babel', <% } %> 'html', 'images', 'fonts', 'extras'], function() {
     return gulp.src('dist/**/*').pipe($.size({
         title: 'build',
         gzip: true
