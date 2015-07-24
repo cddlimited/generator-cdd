@@ -46,13 +46,13 @@ gulp.task('jshint', function() {
 
 <% if (esVersion === 'es6') { %>
 gulp.task('babel', function () {
-    return gulp.src('app/scripts/**/*.js')
+    return gulp.src(['app/scripts/**/*.js', '!app/scripts/compiled/**/*.js'])
         .pipe($.sourcemaps.init())
         .pipe($.babel())
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('app/scripts/compiled/'));
 });
-<% } else { %>
+<% } %>
 
 
 <% if (appType === 'perch') { %>

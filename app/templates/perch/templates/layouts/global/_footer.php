@@ -20,11 +20,18 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js /scripts/main.js -->
-    <script src="/scripts/modules/moduleA.js"></script>
-    <script src="/scripts/modules/moduleB.js"></script>
-    <script src="/scripts/myApp.js"></script>
-    <script src="/scripts/main.js"></script>
+    <!-- build:js scripts/main.js -->
+    <% if (esVersion === 'es6') { %> 
+    <script src="scripts/compiled/myApp.js"></script>
+    <script src="scripts/compiled/modules/moduleA.js"></script>
+    <script src="scripts/compiled/modules/moduleB.js"></script>
+    <script src="scripts/compiled/main.js"></script>
+    <% } else { %> 
+    <script src="scripts/myApp.js"></script>
+    <script src="scripts/modules/moduleA.js"></script>
+    <script src="scripts/modules/moduleB.js"></script>
+    <script src="scripts/main.js"></script> 
+    <% } %> 
     <!-- endbuild -->
 
 </body>

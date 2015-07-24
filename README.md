@@ -1,5 +1,5 @@
 
-# CDD Generator v3
+# CDD Generator v3.2
 
 ## Features
 

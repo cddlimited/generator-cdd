@@ -122,7 +122,7 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: {
         copyGulpfile: function() {
-            this.template('gulpfile.js');
+            this.template('_gulpfile.js', 'gulpfile.js');
         },
 
         copyStructure: function() {
@@ -164,7 +164,11 @@ module.exports = yeoman.generators.Base.extend({
                 );
             } else {
                 this.mkdir('app/perch');
-                this.directory('perch', 'app/perch');
+                this.mkdir('app/perch/templates');
+                this.mkdir('app/perch/templates/layouts');
+                this.mkdir('app/perch/templates/layouts/global');
+                this.copy('app/perch/templates/layouts/global/header.php', 'app/perch/templates/layouts/global/header.php');
+                this.template('app/perch/templates/layouts/global/_footer.php', 'app/perch/templates/layouts/global/footer.php');
             }
 
             this.fs.copyTpl(
