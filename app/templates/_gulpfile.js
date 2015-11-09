@@ -1,6 +1,7 @@
 /* jshint node:true */
 'use strict';
 var gulp = require('gulp');
+var sass = require('gulp-ruby-sass');
 var $ = require('gulp-load-plugins')();
 
 gulp.task('injectScss', function() {
@@ -21,21 +22,16 @@ gulp.task('injectScss', function() {
 });
 
 gulp.task('styles', ['injectScss'], function() {
-    return gulp.src('app/styles/main.scss')
-        .pipe($.plumber())
-        .pipe($.rubySass({
-            style: 'expanded',
-            precision: 10
-        }))
+    return sass('app/styles/main.scss', { style: 'expanded' })
         .pipe($.autoprefixer({
-            browsers: ['last 1 version']
+            browsers: ['last 2 versions']
         }))
         .pipe(gulp.dest('.tmp/styles/temp'));
 });
 
 gulp.task('pixrem', ['styles'], function() {
     return gulp.src('.tmp/styles/temp/main.css')
-        .pipe($.pixrem('17px'))
+        .pipe($.pixrem('16px'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe(gulp.dest('app/styles'));
 });
@@ -47,12 +43,35 @@ gulp.task('jshint', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('html', ['pixrem'], function() {
+
+<% if (esVersion === 'es6') { %>
+gulp.task('babel', function () {
+    return gulp.src(['app/scripts/**/*.js', '!app/scripts/compiled/**/*.js'])
+        .pipe($.sourcemaps.init())
+        .pipe($.babel())
+        .pipe($.sourcemaps.write('.'))
+        .pipe(gulp.dest('app/scripts/compiled/'));
+});
+<% } %>
+
+
+<% if (appType === 'perch') { %>
+gulp.task('html', ['pixrem', 'perch'], function() {
+<% } else { %>
+gulp.task('html', ['pixrem'], function() {    
+<% } %>
+
     var assets = $.useref.assets({
         searchPath: '{.tmp,app}'
     });
 
-    return gulp.src('app/*.html')
+    <% if (appType === 'perch') { %>
+    var filesToProcess = 'app/perch/templates/layouts/global/*.php';
+    <% } else { %>
+    var filesToProcess = 'app/*.html';
+    <% } %>
+
+    return gulp.src(filesToProcess)
         .pipe(assets)
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.csso()))
@@ -65,6 +84,24 @@ gulp.task('html', ['pixrem'], function() {
         .pipe(gulp.dest('dist'));
 });
 
+<% if (appType === 'perch') { %>
+
+gulp.task('movePhpFiles', ['html'], function(){
+    // Move perch partials to the correct folder
+    gulp.src([
+        'dist/head.php',
+        'dist/foot.php'
+    ])
+    .pipe(gulp.dest('dist/perch/templates/layouts/global'));
+});
+
+gulp.task('perch', function () {
+    return gulp.src(['app/perch/**/*', '!app/perch/templates/layouts/global/head.php', '!app/perch/templates/layouts/global/foot.php'], { dot: true })
+        .pipe(gulp.dest('dist/perch'));
+});
+
+<% } %>
+
 gulp.task('images', function() {
     return gulp.src('app/images/**/*')
         .pipe($.cache($.imagemin({
@@ -76,7 +113,7 @@ gulp.task('images', function() {
 
 gulp.task('fonts', function() {
     return gulp.src(require('main-bower-files')().concat('app/fonts/**/*'))
-        .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+        .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'));
 });
@@ -84,8 +121,7 @@ gulp.task('fonts', function() {
 gulp.task('extras', function() {
     return gulp.src([
         'app/*.*',
-        '!app/*.html',
-        'node_modules/apache-server-configs/dist/.htaccess'
+        '!app/*.html'
     ], {
         dot: true
     }).pipe(gulp.dest('dist'));
@@ -126,10 +162,41 @@ gulp.task('wiredep', function() {
         .pipe(wiredep())
         .pipe(gulp.dest('app/styles'));
 
+<% if (appType === 'perch') { %>
+    gulp.src('app/perch/templates/layouts/global/*.php')
+        .pipe(wiredep({
+            ignorePath: /^(\/|\.+(?!\/[^\.]))+\.+/,
+            devDependencies: true, // default: false
+        }))
+        .pipe(gulp.dest('app/perch/templates/layouts/global'));
+<% } else { %>
     gulp.src('app/*.html')
         .pipe(wiredep())
         .pipe(gulp.dest('app'));
+<% } %>
 });
+
+// inject bower components without dev
+gulp.task('wiredepBuild', function() {
+    var wiredep = require('wiredep').stream;
+
+    gulp.src('app/styles/*.scss')
+        .pipe(wiredep())
+        .pipe(gulp.dest('app/styles'));
+
+<% if (appType === 'perch') { %>
+    gulp.src('app/perch/templates/layouts/global/*.php')
+        .pipe(wiredep({
+            ignorePath: /^(\/|\.+(?!\/[^\.]))+\.+/
+        }))
+        .pipe(gulp.dest('app/perch/templates/layouts/global'));
+<% } else { %>
+    gulp.src('app/*.html')
+        .pipe(wiredep())
+        .pipe(gulp.dest('app'));
+<% } %>
+});
+
 
 gulp.task('watch', ['connect'], function() {
     $.livereload.listen();
@@ -143,15 +210,33 @@ gulp.task('watch', ['connect'], function() {
     ]).on('change', $.livereload.changed);
 
     gulp.watch('app/styles/**/*.scss', ['pixrem']);
+    <% if (esVersion === 'es6') { %> 
+    gulp.watch('app/scripts/**/*.js', ['babel']);
+    <% } %> 
     gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function() {
+
+<% if (appType === 'perch') { %>
+
+gulp.task('build', ['wiredepBuild', 'jshint', <% if (esVersion === 'es6') { %> 'babel', <% } %> 'images', 'fonts', 'extras', 'movePhpFiles'], function() {
     return gulp.src('dist/**/*').pipe($.size({
         title: 'build',
         gzip: true
     }));
 });
+
+<% } else { %>
+
+gulp.task('build', ['wiredepBuild', 'jshint', <% if (esVersion === 'es6') { %> 'babel', <% } %> 'html', 'images', 'fonts', 'extras'], function() {
+    return gulp.src('dist/**/*').pipe($.size({
+        title: 'build',
+        gzip: true
+    }));
+});
+
+<% } %>
+
 
 gulp.task('default', ['clean'], function() {
     gulp.start('build');
