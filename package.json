@@ -1,6 +1,6 @@
 {
   "name": "generator-cdd",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
