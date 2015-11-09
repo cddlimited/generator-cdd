@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
 
         // Have Yeoman greet the user.
         var greetings = [
-            'Wow! Shower much?!',
+            'Back on the shaft!',
             'Behold! It\'s the amazing ' + chalk.red('CDD') + ' generator!',
             'Back again huh? Can\'t get enoug of the ' + chalk.red('CDD') + ' generator?',
             chalk.green('Fun fact') + ': By the time I\'m done scaffolding, 26 million men decided to masturbate!',
@@ -167,8 +167,8 @@ module.exports = yeoman.generators.Base.extend({
                 this.mkdir('app/perch/templates');
                 this.mkdir('app/perch/templates/layouts');
                 this.mkdir('app/perch/templates/layouts/global');
-                this.copy('app/perch/templates/layouts/global/header.php', 'app/perch/templates/layouts/global/header.php');
-                this.template('app/perch/templates/layouts/global/_footer.php', 'app/perch/templates/layouts/global/footer.php');
+                this.copy('perch/templates/layouts/global/header.php', 'app/perch/templates/layouts/global/header.php');
+                this.template('perch/templates/layouts/global/_footer.php', 'app/perch/templates/layouts/global/footer.php');
             }
 
             this.fs.copyTpl(
