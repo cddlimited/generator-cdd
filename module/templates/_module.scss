@@ -18,6 +18,12 @@
     $var:    7em;
     $col-fg: #3B5998;
     $col-bg: #c0deed;
+    
+    
+    // 1: @includes
+    // 2: base rules
+    // 3: hover & effects
+    // 4: breakpoints
 
 
     // -------------------------------------
@@ -38,5 +44,7 @@
     // ----- Variation description ----- // 
 
     &--variation {}
+
+}
 
 }
