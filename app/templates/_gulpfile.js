@@ -198,7 +198,7 @@ gulp.task('wiredepBuild', function() {
 });
 
 
-gulp.task('watch', ['connect'], function() {
+gulp.task('watch', ['connect', <% if (esVersion === 'es6') { %> 'babel' <% } %>], function() {
     $.livereload.listen();
 
     // watch for changes

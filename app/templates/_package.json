@@ -37,7 +37,7 @@
         "wiredep": "^2.0.0",
         "frontend-md": "^0.0.4"
         <% if (esVersion === 'es6') { %>,
-        "gulp-babel": "^5.1.0",
+        "gulp-babel": "^6.1.0",
         "gulp-sourcemaps": "^1.5.2",
         "vinyl-source-stream": "^1.1.0"
         <% } %>
